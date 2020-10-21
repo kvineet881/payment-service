@@ -25,4 +25,8 @@ public class PaymentService {
         return new Random().nextBoolean()?"success":"failed";
     }
 
+    public Payment findPaymentHistoryByOrderId(int orderId) {
+        return repository.findByOrderId(orderId);
+
+    }
 }

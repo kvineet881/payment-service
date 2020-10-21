@@ -3,10 +3,7 @@ package com.javatechie.paymentservice.controller;
 import com.javatechie.paymentservice.entity.Payment;
 import com.javatechie.paymentservice.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
@@ -21,8 +18,9 @@ public class PaymentController {
         return service.doPayment(payment);
     }
 
-    private String paymentProcessing()
-    {
-        return new Random().nextBoolean()?"success":"failed";
-    }
+    @GetMapping("/{orderId}")
+   public Payment findPaymentHistoryByOrderId(@PathVariable int orderId)
+   {
+       return service.findPaymentHistoryByOrderId(orderId);
+   }
 }
